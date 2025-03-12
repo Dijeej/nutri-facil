@@ -1,0 +1,32 @@
+{
+  "name": "nutri-facil",
+  "version": "1.0.0",
+  "description": "Projeto de compartilhamento de receitas",
+  "homepage": "https://github.com/Dijeej/nutri-facil#readme",
+  "bugs": {
+    "url": "https://github.com/Dijeej/nutri-facil/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dijeej/nutri-facil.git"
+  },
+  "license": "ISC",
+  "author": "Diego Damasceno",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.11.3",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-ejs-layouts": "^2.5.1",
+    "mongodb": "^6.14.2",
+    "mongoose": "^8.12.1",
+    "nodemon": "^3.1.9"
+  }
+}

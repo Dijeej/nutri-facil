@@ -1,0 +1,24 @@
+.main-content {
+    width: 75%; 
+    margin: 0 auto;
+    margin-bottom: 4%;
+}
+.main-content > h2 {
+    color: var(--cor-ter);
+    width: 75%;
+    padding-bottom: 1%;
+    margin-top: 2%;
+    margin-bottom: 4%;
+    border-bottom: 2px solid var(--cor-ter);
+    font-size: xx-large;
+}
+.main-content div > div > h3 {
+    margin-top: 5%;
+}
+.main-content div > div > h3 > a { 
+    color: var(--cor-ter);
+    text-decoration: none;
+}
+.main-content div > div > h3 > a:hover { 
+    text-decoration: underline;
+}

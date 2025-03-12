@@ -1,0 +1,40 @@
+.footer-main {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--cor-qua);
+    color: black;
+    padding: .6rem;
+}
+.footer-main h3 {
+    color: var(--cor-pri);
+    text-align: center;
+    margin-top: .5rem;
+    border-bottom: .2rem solid rgba(var(--cor-pri-rgb), 0.5);
+    padding-bottom: 0.5%;
+    width: 100%;
+}
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    align-items: baseline;
+}
+.footer-content div {
+    font-size: .75rem;
+    margin-right: 2%;
+    margin-top: 1rem;
+    border-right: .2rem solid var(--cor-pri);
+    padding-right: 1rem;
+}
+.footer-content div > h4 {
+    color: var(--cor-pri);
+    font-size: 1rem;
+    font-weight: bolder;
+    margin-bottom: 2%;
+}
+.footer-content div > p {
+    text-align: left;
+    font-weight: 500;
+}

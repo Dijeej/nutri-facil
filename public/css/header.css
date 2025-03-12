@@ -1,0 +1,83 @@
+.homepage {
+    cursor: pointer;
+}
+.header-main {
+    background-color: var(--cor-pri);
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 15px 15px;
+    width: 100%;
+    height: 60px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.header-main > h1 {
+    color: var(--cor-ses);
+    margin: 0; 
+    font-size: 20px;
+}
+.header-main > h1 a{
+    color: var(--cor-ses);
+}
+#form-pesquisa {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.barra-pesquisa {
+    border: none;
+    border-radius: 50px; 
+    padding: 10px 45px 10px 15px;
+    width: 1000px; 
+    outline: none; 
+    font-size: 16px;
+}
+
+.btn-pesquisa {
+    position: absolute;
+    right: 15px; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-pesquisa > i {
+    font-size: 16px;
+    color: var(--cor-sec);
+}
+.perfil-botao {
+    width: 50px;
+    height: 50px;
+    margin-right: 3%;
+    background-color: var(--cor-pri);
+    border: 2px solid var(--cor-qua); 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.perfil-icone {
+    font-size: 35px; 
+    color: var(--cor-qua);
+}
+
+.perfil-botao:hover {
+    border-radius: 50%; 
+    background-color: var(--cor-qua); 
+}
+
+.perfil-botao:hover i {
+    color: var(--cor-pri);
+}

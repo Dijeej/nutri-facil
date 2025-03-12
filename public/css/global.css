@@ -1,0 +1,298 @@
+:root {
+    --cor-pri: #79B4B0;
+    --cor-pri-rgb: 121, 180, 176;
+    --cor-sec: #9FC089;
+    --cor-sec-rgb: 159, 192, 137;
+    --cor-ter: #FB7E00;
+    --cor-ter-rgb: 251, 126, 0;
+    --cor-qua: #D1DFD2;
+    --cor-qua-rgb: 209, 223, 210; 
+    --cor-qui: #FFCC3F;
+    --cor-qui-rgb: 255, 204, 63;
+    --cor-ses: #FFFFFF;
+    --cor-ses-rgb: 255, 255, 255;
+    --facebook-blue: #3b5998;
+    --google-red: #dc4e41;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: block;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+main {
+    padding-bottom: 25rem; /* Cria espaço para o footer fixo */
+}
+
+/*Cabecalho do site*/
+
+/* Barra de Navegacao */
+
+
+/*Dropdown Perfil*/
+
+/*Conteudo Lateral*/
+
+
+/* Conteudo principal */
+
+
+/*Lista de Receitas*/
+/* .lista-receitas-content {
+    width: 95%; 
+}
+Pagina de receita
+.receita-content {
+    width: 90%;
+}
+.receita-box {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+.receita-container {
+    margin-left: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+}
+.receita-container ul, ol {
+    margin-left: 8%;
+}
+.receita-container ul > li, ol > li { 
+    margin-bottom: 4%;
+}
+.receita-container ul > li::marker, ol > li::marker { 
+    color: var(--cor-ter);
+    font-weight: bold;
+}
+.receita-container h3 {
+    color: var(--cor-ter);
+    margin-bottom: 3%;
+}
+.card-receita {
+    max-width: 400px;
+    padding: 15px;
+}
+.info-receita {
+    margin-top: 2%;
+    display: flex; 
+    justify-content: start; 
+    gap: 10px; 
+}
+.info-receita > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight:600;
+}
+.info-receita span i {
+    margin-right: 5px; 
+}
+Pagina de Perfil
+.perfil-content {
+    margin-top: 8%;
+    width: 90%;
+}
+.perfil-container {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: flex-start;
+}
+.perfil-imagem img{
+    min-width: 200px;
+    
+    height: 100%;
+}
+.perfil-box {
+    display: flex;
+    flex-direction: row;
+}
+Navegacao do perfil
+.perfil-info ul {
+    color: gray;
+    list-style-type: none;
+    margin-top: 40%;
+    margin-left: 30%;
+}
+.perfil-info ul > li {
+    margin-bottom: 20%;
+}
+.perfil-bio {
+    margin-top: 5%;
+    margin-left: 20%;
+}
+.perfil-bio h3 {
+    color: var(--cor-ter);
+    padding-bottom: 2% ;
+    margin-bottom: 2%;
+    border-bottom: 2px solid var(--cor-ter);
+}
+.perfil-bio p {
+    color: gray;
+}
+
+.perfil-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    margin-top: 5%;
+}
+.perfil-nav li {
+    display: inline;
+}
+.perfil-nav a {
+    text-decoration: none;
+    padding: 10px 15px;
+    background: var(--cor-qua);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--cor-ter);
+    font-weight: bold;
+}
+.perfil-nav a.active {
+    background: var(--cor-ter);
+    color: var(--cor-qua);
+}
+.tab-content {
+    display: none;
+    margin-top: 20px;
+}
+.tab-content.active {
+    display: block;
+}
+.tab-content h2 {
+    color: var(--cor-ter);
+}
+.card-foto-perfil img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+ Pagina de Cadastro
+.header-cadastro {
+    align-content: center;
+    justify-content: center;
+}
+.cadastro-body {
+    background-image: url('../img/background-cadastro.jpg'); 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    width: 100%;
+    height: 100vh; 
+}
+.cadastro-content {
+    margin-top: 8%;
+    width: 50%;
+    margin-left: 38%;
+}
+.cadastro-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+    height: 400px;
+    width: 350px;
+    background-color: var(--cor-sec);
+    border-radius: 15px ;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    color: var(--cor-ses);
+}
+.cadastro-container::after {
+    content: "";
+    position: absolute;
+    bottom: -15px; 
+    left: 55%;
+    transform: translateX(-50%); 
+    width: 360px;
+    height: 390px; 
+    background-color: var(--cor-pri); 
+    border-radius: 10px;
+    z-index: -1;
+    
+}
+.cadastro-container h2{
+    margin-bottom:5%;
+}
+.cadastro-form {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.cadastro-form label{
+    margin-bottom: 2%;
+}
+.cadastro-form input{
+    font-size: medium;
+    margin-bottom: 2%;
+    border-radius: 16px;
+    border: none;
+}
+.cadastro-form button{
+    font-weight: bold;
+}
+.btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: var(--cor-ter);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.cadastro-form button:hover {
+    background-color: #db6e00;
+}
+.cadastro-social { 
+    font-weight: bold;
+}
+.cadastro-social button{ 
+    font-weight: bold;
+}
+.cadastro-social .google-btn {
+    background-color: var(--google-red);
+}
+.cadastro-social .facebook-btn {
+    background-color: var(--facebook-blue);
+} */
+/*Rodape*/
+
+/*Animacao de Curtida*/
+.botao-curtida {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.curtida {
+    color: var(--cor-ter);
+    animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
