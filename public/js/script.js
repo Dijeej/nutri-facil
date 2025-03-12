@@ -10,15 +10,13 @@ function validarFormularioPesquisa() {
       }
     });
 }
-function adicionarRedirecionamentoImg() {
-    // Seleciona todas as imagens com a classe "link-img"
+function adicionarRedirecionamentoImg(id) {
     let imagens = document.querySelectorAll(".link-img");
 
-    // Adiciona um evento de clique para cada uma delas
     imagens.forEach(function(imagem) {
       imagem.style.cursor = "pointer";
       imagem.onclick = function() {
-        window.location.href = "receita.html";  // Redireciona para a página
+        window.location.href = `/receita/${id}`;
       };
     });
 }
@@ -26,7 +24,7 @@ function adicionarRedirecionamentoPerfil() {
     let perfis = document.getElementsByClassName("perfil-icone");
     for (let perfil of perfis) {
         perfil.onclick = function() {
-            window.location.href = "perfil.html";
+            window.location.href = "";
         };
     }
 }
@@ -34,7 +32,7 @@ function adicionarRedirecionamentoHomepage() {
     let logos = document.getElementsByClassName("homepage");
     for (let logo of logos) {
         logo.onclick = function() {
-            window.location.href = "main.html";
+            window.location.href = "/";
         };
     }
 }
@@ -54,9 +52,9 @@ function trocaTabAtivaPagPerfil() {
 function trocaCoracao() {
   document.querySelectorAll(".botao-curtida").forEach(heart => {
     heart.addEventListener("click", () => {
-        heart.classList.toggle("bi-heart"); // Remove a versão de contorno
-        heart.classList.toggle("bi-heart-fill");   // Adiciona a versão preenchida
-        heart.classList.toggle("curtida");      // Aplica a animação
+        heart.classList.toggle("bi-heart"); 
+        heart.classList.toggle("bi-heart-fill");   
+        heart.classList.toggle("curtida");      
     });
 });
 }

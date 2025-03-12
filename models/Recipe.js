@@ -2,32 +2,39 @@ import mongoose from "mongoose";
 
 const recipeSchema = new mongoose.Schema({
     title: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     ingredients: {
-      type: [String], 
-      required: true,
+        type: [String], 
+        required: true,
     },
     preparation: {
-      type: String, 
-      required: true,
-      maxlength: 1000, 
+        type: String, 
+        required: true,
     },
     img: {
-      type: String, 
-      required: true,
+        type: String, 
+        required: true,
     },
     likes: [
-      {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: "User", 
-      },
+        {
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: "User", 
+        },
     ],
     preparationTime: {
-      type: Number,
-      required: true,
+        type: Number,
+        required: true,
     },
-  });
-  
-  export default mongoose.model("Recipe", recipeSchema);
+    category: {
+        type: String,
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now, 
+    },
+});
+
+export default mongoose.model("Recipe", recipeSchema);
