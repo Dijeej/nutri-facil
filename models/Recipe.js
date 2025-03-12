@@ -5,10 +5,12 @@ const recipeSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    ingredients: {
-        type: [String], 
-        required: true,
-    },
+    ingredients: [
+        {
+            name: { type: String, required: true },
+            quantity: { type: String, required: true },  // Pode ajustar o tipo de quantity conforme necessário
+        }
+    ],
     preparation: {
         type: String, 
         required: true,

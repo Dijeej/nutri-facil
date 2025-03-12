@@ -1,3 +1,5 @@
 <div class="card-container">
-    <%- include('../components/cardItem.ejs') %>
+    <% recipesList.forEach(recipe => { %>
+        <%- include('cardItem', { recipe: recipe, showImage: true }) %>
+    <% }) %>
 </div>

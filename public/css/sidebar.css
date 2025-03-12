@@ -3,12 +3,13 @@
     width: 25%;
     float: right;
     height: 600px;
+    gap: .2rem;
     position: relative;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items:center;
     align-content: space-evenly;
     margin-top: 2%;
@@ -17,7 +18,7 @@
 }
 
 .side-content > h2 {
-    color: var(--cor-pri);
+    color: #07862d;
     text-align: center;
     border-bottom: 2px solid rgba(var(--cor-sec-rgb), 0.5);
     margin-bottom: 3%;
@@ -27,12 +28,12 @@
     z-index: 1;
 }
 .side-content > div {
-    background-color: var(--cor-ses);
-    width: 90%;
-    padding: 20px 20px;
-    border-radius: 15px;
+    background-color: #d0ffc4;
+    width: 100%;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+    border: none;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 2%;
 }
 .side-content > div > h3 {
     text-align: center;

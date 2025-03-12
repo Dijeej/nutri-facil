@@ -1,7 +1,7 @@
 <main class="">
-    <%- include('../components/sidebar.ejs') %>
+    <%- include('sidebar', {  recipesList: mostLikedRecipes }) %>
     <section class="main-content">
         <h2>Últimas Receitas</h2>
-        <%- include('../components/listCard.ejs') %>
+        <%- include('listCard', { recipesList: latestRecipes }) %>
     </section>
 </main>

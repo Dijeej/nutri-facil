@@ -1,4 +1,6 @@
 <aside class="side-content">
     <h2>Receitas Mais Curtidas</h2>
-    <%- include('../components/cardItem.ejs') %>
+    <% mostLikedRecipes.forEach(recipe => { %>
+        <%- include('cardItem', { recipe: recipe, showImage: false}) %>
+    <% }) %>
 </aside>

@@ -31,7 +31,7 @@ class RecipeController {
                 recipeDelete: null,
                 message,
                 type,
-                layout: 'layout'  // Aplica o layout
+                layout: 'layout' 
             });
         } catch (err) {
             res.status(500).send({ error: err.message });
@@ -40,28 +40,33 @@ class RecipeController {
 
     async getRecipesByDate(req, res) {
         try {
-            const { startDate, endDate } = req.query; // Pegando as datas de filtro da query
-            
-            let filter = {};
-
-            if (startDate && endDate) {
-                // Filtra receitas com base nas datas fornecidas
-                filter.date = {
-                    $gte: new Date(startDate),  // Data de início
-                    $lte: new Date(endDate)     // Data de fim
-                };
-            }
-
-            const recipesList = await Recipe.find(filter);  // Encontrando receitas com filtro de data
-
-            // Retorna as receitas filtradas para a página
-            return res.render("index", {
-                recipesList,
+    
+            // Buscar receitas filtradas por data (se aplicável), ordenadas pela data de criação
+            const allRecipes = await Recipe.find().sort({ createdAt: -1 });
+    
+            // Separar as 5 mais curtidas
+            const mostLikedRecipes = [...allRecipes]
+                .sort((a, b) => {
+                    // Primeiro, comparar pela quantidade de likes
+                    if (b.likes.length !== a.likes.length) {
+                        return b.likes.length - a.likes.length;
+                    }
+                    // Se os likes forem iguais, desempatar pela data de criação
+                    return new Date(b.createdAt) - new Date(a.createdAt);
+                })
+                .slice(0, 4);
+    
+            // Separar as receitas mais recentes (exemplo: últimas 10)
+            const latestRecipes = allRecipes.slice(0, 10);
+    
+            res.render("index", {
+                latestRecipes,
+                mostLikedRecipes,
                 recipe: null,
                 recipeDelete: null,
-                message,
-                type,
-                layout: 'layout'  // Aplica o layout
+                message: null,
+                type: null,
+                layout: "layout"
             });
         } catch (err) {
             res.status(500).send({ error: err.message });
@@ -70,19 +75,40 @@ class RecipeController {
 
     async createRecipe(req, res) {
         const recipe = req.body;
-        if (!recipe || !recipe.title || !recipe.ingredients || !recipe.preparation) {
-            message = "Insira todos os campos para adicionar uma receita.";
+    
+        // Validando se os campos obrigatórios estão preenchidos
+        if (!recipe || !recipe.title || !recipe.ingredients || !recipe.preparation || !recipe.img || !recipe.preparationTime || !recipe.category) {
+            message = "Insira todos os campos obrigatórios para adicionar uma receita.";
             type = "danger";
-            return res.redirect("/");
+            return res.redirect("/"); // Redireciona de volta para a página inicial com a mensagem de erro
         }
-
+    
+        // Garantir que o campo 'likes' seja um array vazio caso não seja passado
+        if (!recipe.likes) {
+            recipe.likes = [];
+        }
+    
         try {
-            await Recipe.create(recipe);
+            // Criar e salvar a receita no banco de dados
+            await Recipe.create({
+                title: recipe.title,
+                ingredients: recipe.ingredients.split(','), // Convertendo a string de ingredientes para um array
+                preparation: recipe.preparation,
+                img: recipe.img,
+                likes: recipe.likes, // Usando o array de likes fornecido
+                preparationTime: parseInt(recipe.preparationTime), // Convertendo para inteiro
+                category: recipe.category,
+            });
+    
+            // Mensagem de sucesso
             message = "Receita adicionada com sucesso!";
             type = "success";
-            return res.redirect("/"); 
+            return res.redirect("/"); // Redireciona para a página inicial com a mensagem de sucesso
         } catch (err) {
-            res.status(500).send({error: err.message});
+            // Tratamento de erro
+            message = "Erro ao adicionar a receita: " + err.message;
+            type = "danger";
+            return res.redirect("/"); // Redireciona para a página inicial com a mensagem de erro
         }
     }
 
@@ -125,7 +151,7 @@ class RecipeController {
                 return res.redirect("/");
             }
 
-            res.render("recipeDetail", {
+            res.render("recipe", {
                 recipe,
                 message,
                 type,
