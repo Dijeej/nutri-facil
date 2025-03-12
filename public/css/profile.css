@@ -1,0 +1,80 @@
+.perfil-content {
+    margin-top: 8%;
+    width: 90%;
+}
+.perfil-container {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: flex-start;
+}
+.perfil-imagem img{
+    min-width: 200px;
+    
+    height: 100%;
+}
+.perfil-box {
+    display: flex;
+    flex-direction: row;
+}
+Navegacao do perfil
+.perfil-info ul {
+    color: gray;
+    list-style-type: none;
+    margin-top: 40%;
+    margin-left: 30%;
+}
+.perfil-info ul > li {
+    margin-bottom: 20%;
+}
+.perfil-bio {
+    margin-top: 5%;
+    margin-left: 20%;
+}
+.perfil-bio h3 {
+    color: var(--cor-ter);
+    padding-bottom: 2% ;
+    margin-bottom: 2%;
+    border-bottom: 2px solid var(--cor-ter);
+}
+.perfil-bio p {
+    color: gray;
+}
+
+.perfil-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    margin-top: 5%;
+}
+.perfil-nav li {
+    display: inline;
+}
+.perfil-nav a {
+    text-decoration: none;
+    padding: 10px 15px;
+    background: var(--cor-qua);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--cor-ter);
+    font-weight: bold;
+}
+.perfil-nav a.active {
+    background: var(--cor-ter);
+    color: var(--cor-qua);
+}
+.tab-content {
+    display: none;
+    margin-top: 20px;
+}
+.tab-content.active {
+    display: block;
+}
+.tab-content h2 {
+    color: var(--cor-ter);
+}
+.card-foto-perfil img {
+    max-width: 200px;
+    max-height: 200px;
+}

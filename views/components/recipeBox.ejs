@@ -1,10 +1,14 @@
 <div class="receita-box">
     <div class="card card-receita">
-        <img src="img/bolo-tapioca.jpg" alt="Receita">
+        <img src="<%= recipe.img %>" alt="<%= recipe.title %>">
         <div class="info-receita">
-            <span class="num-curtida"><i class="fa-regular fa-heart botao-curtida"></i> 120</span>
-            <span class="num-tempo"><i class="fas fa-clock"></i> 25 min</span>
+            <span class="num-curtida">
+                <i class="bi bi-heart botao-curtida"></i> <%= recipe.likes.length > 0 ? recipe.likes.length : 0 %>
+            </span>
+            <span class="num-tempo">
+                <i class="bi bi-clock"></i> <%= recipe.preparationTime %> min
+            </span>
         </div>
     </div>
-    <%- include('./recipeInfos.ejs') %>
+    <%- include('./recipeInfos.ejs', {ingredients: recipe.ingredients, preparation: recipe.preparation}) %>
 </div>
