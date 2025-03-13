@@ -70,10 +70,7 @@ class RecipeController {
 
     async createRecipe(req, res) {
         try {
-            console.log("Body", req.body);
-            console.log("Id user", req.user.id);
             const recipe = req.body;
-            console.log("Receita recebida:", recipe);
     
             // Verificar se todos os campos obrigatórios estão preenchidos
             if (
@@ -97,7 +94,6 @@ class RecipeController {
                 typeof ingredient.name === "string" &&
                 typeof ingredient.quantity === "string"
             );
-            console.log("Ingredientes válidos:", isValidIngredients);
             if (!isValidIngredients) {
                 req.flash("danger", "Os ingredientes devem conter nome e quantidade.");
                 return res.redirect("/recipe/add");
@@ -109,8 +105,6 @@ class RecipeController {
                 req.flash("danger", "O tempo de preparo deve ser um número válido.");
                 return res.redirect("/");
             }
-
-            console.log("Tempo de preparo:", preparationTime);
             // Criar e salvar a receita no banco de dados
             await Recipe.create({
                 title: recipe.title,
@@ -123,7 +117,7 @@ class RecipeController {
                 likes: recipe.likes,
                 preparationTime,
                 category: recipe.category,
-                idUser: req.user.id // Pegando ID do usuário autenticado
+                idUser: req.user.id
             });
     
             req.flash("success", "Receita adicionada com sucesso!");
