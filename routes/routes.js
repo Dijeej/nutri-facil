@@ -1,26 +1,18 @@
 import Router from "express";
 import { RecipeController } from "../controller/RecipeController.js";
+import { ensureAuthenticated } from "../middlewares/authMiddleware.js";
 
 const routes = Router();
 const recipeController = new RecipeController();
 
-// Rota para buscar todas as receitas
+// Rota pública (buscar receitas)
 routes.get("/", recipeController.getRecipesByDate);
 routes.get("/recipes", recipeController.getAll);
-
-// Rota para criar uma nova receita
-routes.post("/create", recipeController.createRecipe);
-
-// Rota para exibir uma receita específica (com método de atualização ou exclusão)
-routes.get("/getById/:id/:method", recipeController.getById);
-
-// Rota para exibir uma receita específica
 routes.get("/receita/:id", recipeController.getRecipeById);
 
-// Rota para atualizar uma receita
-routes.post("/update/:id", recipeController.updateRecipe);
-
-// Rota para excluir uma receita
-routes.get("/delete/:id", recipeController.deleteRecipe);
+// Rotas protegidas (precisam de login)
+routes.post("/create", ensureAuthenticated, recipeController.createRecipe);
+routes.post("/update/:id", ensureAuthenticated, recipeController.updateRecipe);
+routes.delete("/delete/:id", ensureAuthenticated, recipeController.deleteRecipe);
 
 export { routes };

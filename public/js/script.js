@@ -10,21 +10,11 @@ function validarFormularioPesquisa() {
       }
     });
 }
-function adicionarRedirecionamentoImg(id) {
-    let imagens = document.querySelectorAll(".link-img");
-
-    imagens.forEach(function(imagem) {
-      imagem.style.cursor = "pointer";
-      imagem.onclick = function() {
-        window.location.href = `/receita/${id}`;
-      };
-    });
-}
-function adicionarRedirecionamentoPerfil() {
+function adicionarRedirecionamentoPerfil(id) {
     let perfis = document.getElementsByClassName("perfil-icone");
     for (let perfil of perfis) {
         perfil.onclick = function() {
-            window.location.href = "";
+            window.location.href = `/perfil/${id}`;
         };
     }
 }
@@ -59,7 +49,6 @@ function trocaCoracao() {
 });
 }
   // Chamada de funcoes de redirecionamento
-  adicionarRedirecionamentoImg();
   validarFormularioPesquisa();
   adicionarRedirecionamentoPerfil();
   adicionarRedirecionamentoHomepage();

@@ -41,22 +41,17 @@ class RecipeController {
     async getRecipesByDate(req, res) {
         try {
     
-            // Buscar receitas filtradas por data (se aplicável), ordenadas pela data de criação
             const allRecipes = await Recipe.find().sort({ createdAt: -1 });
     
-            // Separar as 5 mais curtidas
             const mostLikedRecipes = [...allRecipes]
                 .sort((a, b) => {
-                    // Primeiro, comparar pela quantidade de likes
                     if (b.likes.length !== a.likes.length) {
                         return b.likes.length - a.likes.length;
                     }
-                    // Se os likes forem iguais, desempatar pela data de criação
                     return new Date(b.createdAt) - new Date(a.createdAt);
                 })
                 .slice(0, 4);
     
-            // Separar as receitas mais recentes (exemplo: últimas 10)
             const latestRecipes = allRecipes.slice(0, 10);
     
             res.render("index", {

@@ -1,7 +1,8 @@
 <div class="card">
     <% if (recipe) { %>
         <% if (showImage) { %>
-            <img class="link-img" src="<%= recipe.img %>" alt="Receita">
+            <img class="card-img" src="<%= recipe.img %>" alt="<%= recipe.title %>" 
+            onclick="window.location.href='/receita/<%= recipe._id %>'" style="cursor: pointer;" />
         <% } %>
         <h3><a href="<%= `/receita/${recipe._id}` %>"><%= recipe.title %></a></h3>
         <p>

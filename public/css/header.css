@@ -20,7 +20,7 @@
     margin: 0; 
     font-size: 20px;
 }
-.header-main > h1 a{
+.header-main > h1 > a{
     color: var(--cor-ses);
 }
 #form-pesquisa {

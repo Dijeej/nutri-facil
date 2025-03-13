@@ -13,13 +13,13 @@
     justify-content: space-around;
     align-content: center;
 }
-.receita-container ul, ol {
+.receita-container ul {
     margin-left: 8%;
 }
-.receita-container ul > li, ol > li { 
+.receita-container ul > li { 
     margin-bottom: 4%;
 }
-.receita-container ul > li::marker, ol > li::marker { 
+.receita-container ul > li::marker { 
     color: var(--cor-ter);
     font-weight: bold;
 }
