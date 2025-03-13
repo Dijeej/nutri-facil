@@ -40,6 +40,7 @@ function trocaCoracao() {
     });
 });
 }
+
   // Chamada de funcoes de redirecionamento
   validarFormularioPesquisa();
   adicionarRedirecionamentoHomepage();

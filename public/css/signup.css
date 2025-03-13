@@ -68,7 +68,7 @@
     font-weight: bold;
 }
 .btn {
-    margin-top: 15px;
+    margin-top: .8rem;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -85,10 +85,4 @@
 }
 .cadastro-social button{ 
     font-weight: bold;
-}
-.cadastro-social .google-btn {
-    background-color: var(--google-red);
-}
-.cadastro-social .facebook-btn {
-    background-color: var(--facebook-blue);
 }

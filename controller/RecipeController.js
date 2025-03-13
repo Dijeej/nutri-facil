@@ -69,43 +69,72 @@ class RecipeController {
     }
 
     async createRecipe(req, res) {
-        const recipe = req.body;
-    
-        // Validando se os campos obrigatórios estão preenchidos
-        if (!recipe || !recipe.title || !recipe.ingredients || !recipe.preparation || !recipe.img || !recipe.preparationTime || !recipe.category) {
-            message = "Insira todos os campos obrigatórios para adicionar uma receita.";
-            type = "danger";
-            return res.redirect("/"); // Redireciona de volta para a página inicial com a mensagem de erro
-        }
-    
-        // Garantir que o campo 'likes' seja um array vazio caso não seja passado
-        if (!recipe.likes) {
-            recipe.likes = [];
-        }
-    
         try {
+            console.log("Body", req.body);
+            console.log("Id user", req.user.id);
+            const recipe = req.body;
+            console.log("Receita recebida:", recipe);
+    
+            // Verificar se todos os campos obrigatórios estão preenchidos
+            if (
+                !recipe ||
+                typeof recipe.title !== "string" ||
+                !Array.isArray(recipe.ingredients) ||
+                recipe.ingredients.some(ingredient => typeof ingredient.name !== "string" || typeof ingredient.quantity !== "string") ||
+                typeof recipe.preparation !== "string" ||
+                typeof recipe.img !== "string" ||
+                typeof recipe.preparationTime !== "string" ||
+                typeof recipe.category !== "string"
+            ) {
+                req.flash("danger", "Insira todos os campos obrigatórios corretamente.");
+                console.log("Erro: Campos obrigatórios não preenchidos corretamente.");
+                return res.redirect("/recipe/add");
+            }
+    
+            // Garantir que 'ingredients' seja um array de objetos válidos
+            const isValidIngredients = recipe.ingredients.every(ingredient =>
+                typeof ingredient === "object" &&
+                typeof ingredient.name === "string" &&
+                typeof ingredient.quantity === "string"
+            );
+            console.log("Ingredientes válidos:", isValidIngredients);
+            if (!isValidIngredients) {
+                req.flash("danger", "Os ingredientes devem conter nome e quantidade.");
+                return res.redirect("/recipe/add");
+            }
+            
+            // Garantir que 'preparationTime' seja um número inteiro
+            const preparationTime = parseInt(recipe.preparationTime, 10);
+            if (isNaN(preparationTime) || preparationTime <= 0) {
+                req.flash("danger", "O tempo de preparo deve ser um número válido.");
+                return res.redirect("/");
+            }
+
+            console.log("Tempo de preparo:", preparationTime);
             // Criar e salvar a receita no banco de dados
             await Recipe.create({
                 title: recipe.title,
-                ingredients: recipe.ingredients.split(','), // Convertendo a string de ingredientes para um array
+                ingredients: recipe.ingredients.map(ingredient => ({
+                    name: ingredient.name,
+                    quantity: ingredient.quantity
+                })),
                 preparation: recipe.preparation,
                 img: recipe.img,
-                likes: recipe.likes, // Usando o array de likes fornecido
-                preparationTime: parseInt(recipe.preparationTime), // Convertendo para inteiro
+                likes: recipe.likes,
+                preparationTime,
                 category: recipe.category,
+                idUser: req.user.id // Pegando ID do usuário autenticado
             });
     
-            // Mensagem de sucesso
-            message = "Receita adicionada com sucesso!";
-            type = "success";
-            return res.redirect("/"); // Redireciona para a página inicial com a mensagem de sucesso
+            req.flash("success", "Receita adicionada com sucesso!");
+            return res.redirect("/");
         } catch (err) {
-            // Tratamento de erro
-            message = "Erro ao adicionar a receita: " + err.message;
-            type = "danger";
-            return res.redirect("/"); // Redireciona para a página inicial com a mensagem de erro
+            console.error("Erro ao adicionar receita:", error);
+            req.flash("danger", "Erro ao adicionar a receita: " + err.message);
+            return res.redirect("/");
         }
     }
+
 
     async getById(req, res) {
         try {        
@@ -154,6 +183,17 @@ class RecipeController {
             });
         } catch (err) {
             res.status(500).send({error: err.message});
+        }
+    }
+    async getAddRecipePage(req, res) {
+        try {
+            res.render("recipeAdd", {
+                message: "",
+                type: "",
+                layout: "layoutRegister"
+            });
+        } catch (err) {
+            res.status(500).send({ error: err.message });
         }
     }
 

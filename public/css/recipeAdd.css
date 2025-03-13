@@ -1,0 +1,120 @@
+.cadastro-content-recipe {
+    margin-top: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cadastro-container-recipe {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 3rem;
+    height: 400px;
+    width: 80%;
+    background-color: var(--cor-sec);
+    border-radius: 15px ;
+    justify-content: center;
+    align-items: center;
+    color: var(--cor-ses);
+    overflow:auto ;
+}
+.cadastro-container-recipe::after {
+    content: "";
+    position: absolute;
+    bottom: -15px; 
+    left: 55%;
+    transform: translateX(-50%); 
+    width: 100%;
+    height: 500px; 
+    background-color: var(--cor-pri); 
+    border-radius: 10px;
+    z-index: -1;
+    
+}
+.cadastro-container-recipe h2{
+    color: var(--cor-ter);
+    font-size: xx-large;
+    margin-bottom:3rem;
+}
+
+.cadastro-form-recipe {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.cadastro-form-recipe select {
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 2%;
+    border-radius: 1rem;
+    border: none;
+}
+
+.cadastro-form-recipe textarea {
+    width: 100%; 
+    height: 150px; 
+    resize: none;
+    border: none;
+    border-radius: .2rem;
+}
+
+#ingredients-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    width: 100%;
+}
+
+.ingredient {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.ingredient input {
+    flex: 1; 
+}
+
+.cadastro-form-recipe label{
+    margin-bottom: 2%;
+}
+.cadastro-form-recipe input{
+    height: 2rem;
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 2%;
+    border-radius: 1rem;
+    border: none;
+    width: 80%;
+}
+.cadastro-form-recipe button{
+    font-weight: bold;
+}
+.btn {
+    margin: .8rem;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: var(--cor-ter);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #db6e00;
+}
+.btn-confirm {
+    background-color: var(--cor-pri);
+}
+.btn-confirm:hover { 
+    background-color: #507774;
+}

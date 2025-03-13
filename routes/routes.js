@@ -14,10 +14,11 @@ routes.get("/receita/:id", recipeController.getRecipeById);
 routes.get("/signup", userController.singUpPage);
 
 // Rotas protegidas (precisam de login)
-routes.post("/create", ensureAuthenticated, recipeController.createRecipe);
 routes.post("/update/:id", ensureAuthenticated, recipeController.updateRecipe);
 routes.delete("/delete/:id", ensureAuthenticated, recipeController.deleteRecipe);
 routes.get("/perfil/:id", ensureAuthenticated, userController.getUserProfile);
+routes.get("/recipe/add", ensureAuthenticated,recipeController.getAddRecipePage);
+routes.post("/add/create", ensureAuthenticated, recipeController.createRecipe);
 
 
 

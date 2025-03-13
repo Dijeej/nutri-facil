@@ -1,48 +1,50 @@
-<form action="/" method="POST" enctype="multipart/form-data">
-    <div>
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required>
-    </div>
+<div class="cadastro-content-recipe">
+    <div class="cadastro-container-recipe">
+        <h2>Cadastro de Receita</h2>
+        <form class="cadastro-form-recipe" action="/add/create" method="POST">
+            <% if (message) { %>
+                <div class="alert <%= type %>">
+                    <%= message %>
+                </div>
+            <% } %>
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+            <div id="ingredients-container">
+                <label>Ingredientes:</label>
+                <div class="ingredient">
+                  <input type="text" name="ingredients[0][name]" placeholder="Nome do ingrediente" required>
+                  <input type="text" name="ingredients[0][quantity]" placeholder="Quantidade" required>
+                  <button type="button" onclick="removeIngredient(this)">✖</button>
+                </div>
+              </div>
+              
+            <button class="btn" type="button" onclick="addIngredient()">Adicionar Ingrediente</button>
 
-    <div id="ingredients-container">
-        <label>Ingredientes:</label>
-        <div class="ingredient">
-            <input type="text" name="ingredients[][name]" placeholder="Nome do ingrediente" required>
-            <input type="text" name="ingredients[][quantity]" placeholder="Quantidade" required>
-            <button type="button" onclick="removeIngredient(this)">✖</button>
-        </div>
-    </div>
-    <button type="button" onclick="addIngredient()">Adicionar Ingrediente</button>
+            <label for="preparationTime">Tempo de preparo (min):</label>
+            <input type="number" id="preparationTime" name="preparationTime" required>
 
-    <div>
-        <label for="preparationTime">Tempo de preparo (min):</label>
-        <input type="number" id="preparationTime" name="preparationTime" required>
-    </div>
+            <div>
+                <label for="category">Categoria:</label>
+                <select id="category" name="category" required>
+                    <option value="Sobremesa">Sobremesa</option>
+                    <option value="Prato Principal">Prato Principal</option>
+                    <option value="Bolo">Bolo</option>
+                    <option value="Lanche">Lanche</option>
+                    <option value="Bebida">Bebida</option>
+                    <option value="Carne">Carne</option>
+                    <option value="Salada">Salada</option>
+                    <option value="Massa">Massa</option>
+                    <option value="Fruto do Mar">Fruto do Mar</option>
+                </select>
+            </div>
 
-    <div>
-        <label for="category">Categoria:</label>
-        <select id="category" name="category" required>
-            <option value="Sobremesa">Sobremesa</option>
-            <option value="Prato Principal">Prato Principal</option>
-            <option value="Bolo">Bolo</option>
-            <option value="Lanche">Lanche</option>
-            <option value="Bebida">Bebida</option>
-            <option value="Carne">Carne</option>
-            <option value="Salada">Salada</option>
-            <option value="Massa">Massa</option>
-            <option value="Fruto do Mar">Fruto do Mar</option>
-        </select>
-    </div>
+                <label for="img">Imagem (insira o link da imagem):</label>
+                <input type="text" id="img" name="img" placeholder="Insira o link da imagem" required>
 
-    <div>
-        <label for="img">Imagem:</label>
-        <input type="file" id="img" name="img" accept="image/*" required>
-    </div>
+                <label for="preparation">Modo de Preparo:</label>
+                <textarea id="preparation" name="preparation" required></textarea>
 
-    <div>
-        <label for="preparation">Modo de Preparo:</label>
-        <textarea id="preparation" name="preparation" required></textarea>
+            <button class="btn btn-confirm" type="submit">Cadastrar Receita</button>
+        </form>
     </div>
-
-    <button type="submit">Cadastrar Receita</button>
-</form>
+</div>

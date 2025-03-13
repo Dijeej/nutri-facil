@@ -19,7 +19,7 @@ const recipeSchema = new mongoose.Schema({
         type: String, 
         required: true,
     },
-    _idUser: {
+    idUser: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
@@ -27,6 +27,7 @@ const recipeSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId, 
             ref: "User", 
+            default: []
         },
     ],
     preparationTime: {
