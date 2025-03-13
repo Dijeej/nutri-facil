@@ -16,16 +16,14 @@
         <link rel="stylesheet" href="/css/recipe.css" />
         <link rel="stylesheet" href="/css/recipes.css" />
         <link rel="stylesheet" href="/css/profile.css" />
+        <link rel="stylesheet" href="/css/signup.css" />
         <title>NutriFácil</title>
     </head>
-    <body>
-        <%- include('components/header.ejs') %>
+    <body class="cadastro-body">
+        <%- include('components/header.ejs', {noSearchBar: true}) %>
 
-        <%- include('components/navbar.ejs', {noSearchBar : false}) %>
         
         <%- body %>
-
-        <%- include('components/footer.ejs') %>
 
         <!-- Script JS -->
         <script src="/js/script.js"></script>

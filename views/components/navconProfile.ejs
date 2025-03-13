@@ -2,60 +2,17 @@
     <ul>
         <li><a href="#" class="tab-link active" data-tab="receitas">Minhas Receitas</a></li>
         <li><a href="#" class="tab-link" data-tab="curtidas">Receitas Curtidas</a></li>
-        <li><a href="#" class="tab-link" data-tab="comentarios">Comentários</a></li>
-        <li><a href="#" class="tab-link" data-tab="fotos">Fotos</a></li>
     </ul>
 </nav>
 <div id="receitas" class="tab-content active">
     <h2>Minhas Receitas</h2>
-    <div>
-        <h3><a href="receita.html">Estrogonofe Light de Frango </a></h3>
-        <p>Peito de Frango • Iourgute Natural • Cebola • Alho</p>
-        <div class="info-receita">
-            <span class="num-curtida"><i class="fas fa-heart"></i> 150</span>
-            <span class="num-tempo"><i class="fas fa-clock"></i> 30 min</span>
-        </div>
-    </div>
-    <div>
-        <h3><a href="receita.html">Bolo de Tapioca</a></h3>
-        <p>Tapioca Granulada • Leite Condensado Light • Leite de Coco</p>
-        <div class="info-receita">
-            <span class="num-curtida"><i class="fas fa-heart"></i> 200</span>
-            <span class="num-tempo"><i class="fas fa-clock"></i> 40 min</span>
-        </div>
-    </div>
+    <% recipesAdded.forEach(recipe => { %>
+        <%- include('./cardItem.ejs', { recipe: recipe, showImage: true }) %>
+    <% }) %>
 </div>
 <div id="curtidas" class="tab-content">
     <h2>Receitas Curtidas</h2>
-    <div>
-        <h3><a href="receita.html">Empadão de Grão de Bico</a></h3>
-        <p>Tapioca Granulada • Leite Condensado Light • Leite de Coco</p>
-        <div class="info-receita">
-            <span class="num-curtida"><i class="fas fa-heart"></i></span>
-            <span class="num-tempo"><i class="fas fa-clock"></i> 2h 30 min</span>
-        </div>
-    </div>
-    <div>
-        <h3><a href="receita.html">Omelete de talos e ramas</a></h3>
-        <p>Grão de bico • Frango • Palmito • Alho</p>
-        <div class="info-receita">
-            <span class="num-curtida"><i class="fas fa-heart"></i></span>
-            <span class="num-tempo"><i class="fas fa-clock"></i> 25 min</span>
-        </div>
-    </div>
-</div>
-<div id="comentarios" class="tab-content comentarios">
-    <h2>Comentários</h2>
-    <p>Nenhum comentário no memoento</p>
-</div>
-<div id="fotos" class="tab-content">
-    <!-- <div class="card-container"> -->
-        <h2>Fotos</h2>
-        <div class="card card-foto-perfil">
-            <img src="img/bolo-tapioca.jpg"/>
-        </div>
-        <div class="card card-foto-perfil">
-            <img src="img/estrogonofe-frango.jpg"/>
-        </div>
-    <!-- </div> -->
+    <% recipesLiked.forEach(recipe => { %>
+        <%- include('./cardItem.ejs', { recipe: recipe, showImage: true }) %>
+    <% }) %>
 </div>

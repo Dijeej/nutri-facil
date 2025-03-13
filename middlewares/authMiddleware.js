@@ -3,5 +3,5 @@ export function ensureAuthenticated(req, res, next) {
         return next();
     }
     req.flash("error_msg", "Você precisa estar logado para acessar esta página.");
-    res.redirect("/login");
+    res.redirect("/");
 }

@@ -1,15 +1,27 @@
 <div class="perfil-dropdown">
-    <button class="perfil-botao">
-        <i class="bi bi-person-fill perfil-icone"></i>
-    </button>
-    <div class="perfil-dropdown-content">
-        <input class="perfil-dropdown-email" type="email" name="email" placeholder="E-mail"/>
-        <input class="perfil-dropdown-senha" type="password" name="senha" placeholder="Senha"/>
-        <button class="perfil-dropdown-btn-login">Login</button>
-        <p>Entre com</p>
-        <button class="perfil-dropdown-btn"><i class="bi bi-google"></i></button>
-        <button class="perfil-dropdown-btn"><i class="bi bi-facebook"></i></button>
-        <p>Não tem conta?</p>
-        <a class="perfil-dropdown-cadastro" href="login.html">Cadastre-se</a>
-    </div>
+    <% if (user) { %>
+        <button class="perfil-botao" onclick="window.location.href='/perfil/<%= user._id %>'" style="cursor: pointer;">
+            <i class="bi bi-person-fill perfil-icone"></i>
+        </button>
+        <div class="perfil-dropdown-content ">
+            <div class="dropdown-logged">
+                <a class="perfil-dropdown-btn-default" href="<%=`/perfil/${user._id}`%>">Perfil</a>
+                <a class="perfil-dropdown-btn-default" href="/register">Receita <i class="bi bi-plus-circle"></i></a>
+                <a class="perfil-dropdown-btn-default" href="/logout">Sair <i class="bi bi-door-open"></i></a>
+            </div>
+        </div>
+    <% } else { %>
+        <button class="perfil-botao">
+            <i class="bi bi-person-fill perfil-icone"></i>
+        </button>
+        <div class="perfil-dropdown-content">
+            <form action="/login" method="POST">
+                <input class="perfil-dropdown-email" type="email" name="email" placeholder="E-mail" required />
+                <input class="perfil-dropdown-senha" type="password" name="password" placeholder="Senha" required />
+                <button type="submit" class="perfil-dropdown-btn-login">Login</button>
+            </form>
+            <p>Não tem conta?</p>
+            <a class="perfil-dropdown-btn-default" href="/signup">Cadastre-se</a>
+        </div>
+    <% } %>
 </div>

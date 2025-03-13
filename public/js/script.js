@@ -10,14 +10,6 @@ function validarFormularioPesquisa() {
       }
     });
 }
-function adicionarRedirecionamentoPerfil(id) {
-    let perfis = document.getElementsByClassName("perfil-icone");
-    for (let perfil of perfis) {
-        perfil.onclick = function() {
-            window.location.href = `/perfil/${id}`;
-        };
-    }
-}
 function adicionarRedirecionamentoHomepage() {
     let logos = document.getElementsByClassName("homepage");
     for (let logo of logos) {
@@ -50,7 +42,6 @@ function trocaCoracao() {
 }
   // Chamada de funcoes de redirecionamento
   validarFormularioPesquisa();
-  adicionarRedirecionamentoPerfil();
   adicionarRedirecionamentoHomepage();
 
 
