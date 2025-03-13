@@ -1,5 +1,5 @@
 <div class="card-container">
     <% recipesList.forEach(recipe => { %>
-        <%- include('cardItem', { recipe: recipe, showImage: true }) %>
+        <%- include('cardItem', { recipe: recipe, showImage: true, withOptions: false }) %>
     <% }) %>
 </div>

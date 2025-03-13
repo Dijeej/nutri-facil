@@ -197,7 +197,7 @@ class RecipeController {
             await Recipe.updateOne({_id: req.params.id }, recipe);
             message = "Receita alterada com sucesso!";
             type = "success";
-            res.redirect("/");  // Isso renderiza a página com o layout por padrão
+            res.redirect(`/perfil/${req.user.id}`);
         } catch (err) {
             res.status(500).send({error: err.message});
         }
@@ -205,12 +205,25 @@ class RecipeController {
 
     async deleteRecipe(req, res) {
         try {
-            await Recipe.deleteOne({_id: req.params.id});
-            message = "Receita apagada com sucesso!";
-            type = "success";
-            res.redirect("/");  // Isso renderiza a página com o layout por padrão
+            const recipe = await Recipe.findById(req.params.id);
+            console.log(recipe);
+            if (!recipe) {
+                req.flash("danger", "Receita não encontrada!");
+                return res.redirect(`/perfil/${req.user.id}`);
+            }
+    
+            // Verificar se a receita pertence ao usuário
+            if (recipe.idUser.toString() !== req.user.id) {
+                req.flash("danger", "Você não tem permissão para excluir essa receita.");
+                return res.redirect(`/perfil/${req.user.id}`);
+            }
+    
+            await Recipe.deleteOne({ _id: req.params.id });
+            req.flash("success", "Receita apagada com sucesso!");
+            res.redirect(`/perfil/${req.user.id}`);
         } catch (err) {
-            res.status(500).send({error: err.message});
+            console.log(err);
+            res.status(500).send({ error: err.message });
         }
     }
 }

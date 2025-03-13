@@ -7,12 +7,12 @@
 <div id="receitas" class="tab-content active">
     <h2>Minhas Receitas</h2>
     <% recipesAdded.forEach(recipe => { %>
-        <%- include('./cardItem.ejs', { recipe: recipe, showImage: true }) %>
+        <%- include('./cardItem.ejs', { recipe: recipe, showImage: true, withOptions: true }) %>
     <% }) %>
 </div>
 <div id="curtidas" class="tab-content">
     <h2>Receitas Curtidas</h2>
     <% recipesLiked.forEach(recipe => { %>
-        <%- include('./cardItem.ejs', { recipe: recipe, showImage: true }) %>
+        <%- include('./cardItem.ejs', { recipe: recipe, showImage: true, withOptions: false }) %>
     <% }) %>
 </div>

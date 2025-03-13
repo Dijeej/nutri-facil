@@ -1,6 +1,6 @@
 <aside class="side-content">
     <h2>Receitas Mais Curtidas</h2>
     <% mostLikedRecipes.forEach(recipe => { %>
-        <%- include('cardItem', { recipe: recipe, showImage: false}) %>
+        <%- include('cardItem', { recipe: recipe, showImage: false, withOptions: false}) %>
     <% }) %>
 </aside>
